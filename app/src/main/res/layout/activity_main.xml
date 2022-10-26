@@ -16,76 +16,77 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/tvRedraw"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/mainText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:text="哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sub"
-            android:layout_marginStart="4dp"/>
-    </LinearLayout>
-
-<!--    <com.vision.overhide.OverHideLayout-->
-<!--        android:layout_width="0dp"-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_marginHorizontal="50dp">-->
-
+<!--        android:orientation="horizontal">-->
 <!--        <TextView-->
+<!--            android:id="@+id/mainText"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:text="2万播放"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="4dp"-->
-<!--            android:text="20万追番"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="4dp"-->
-<!--            android:text="200万收藏"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="4dp"-->
-<!--            android:text="2000万点赞"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="4dp"-->
 <!--            android:maxLines="1"-->
 <!--            android:ellipsize="end"-->
-<!--            android:text="哔哩哔哩荣誉出品"/>-->
+<!--            android:text="哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品哔哩哔哩荣誉出品"/>-->
 
 <!--        <TextView-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="4dp"-->
-<!--            android:text="9.9分"/>-->
+<!--            android:text="sub"-->
+<!--            android:layout_marginStart="4dp"/>-->
+<!--    </LinearLayout>-->
 
-<!--    </com.vision.overhide.OverHideLayout>-->
+    <com.vision.overhide.OverHideLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2万播放"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="20万追番"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="200万收藏"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="2000万点赞"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="哔哩哔1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:maxLines="1"
+            android:text="9.9分"/>
+
+    </com.vision.overhide.OverHideLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tvRedraw = findViewById(R.id.tvRedraw)
-        tvMain = findViewById(R.id.mainText)
+//        tvMain = findViewById(R.id.mainText)
         tvRedraw.setOnClickListener {
             text += "品"
             tvMain.text = text
