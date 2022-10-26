@@ -6,13 +6,30 @@ import android.view.ViewGroup
 import androidx.core.view.children
 import kotlin.math.max
 
-class OverHideLayout @JvmOverloads constructor(
+class OverflowAutoHideLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
 ) : ViewGroup(context, attrs) {
     private var lastVisibleIndex = -1
 
     override fun generateLayoutParams(attrs: AttributeSet?): LayoutParams {
-        return MarginLayoutParams(context, attrs)
+        return LayoutParams(context, attrs)
+    }
+
+    override fun generateDefaultLayoutParams(): ViewGroup.LayoutParams {
+        return LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    override fun checkLayoutParams(p: ViewGroup.LayoutParams?): Boolean {
+        return p is LayoutParams
+    }
+
+    override fun generateLayoutParams(p: ViewGroup.LayoutParams): ViewGroup.LayoutParams {
+        if (p is LayoutParams) {
+            return LayoutParams(p)
+        } else if (p is MarginLayoutParams) {
+            return LayoutParams(p)
+        }
+        return LayoutParams(p)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -32,7 +49,7 @@ class OverHideLayout @JvmOverloads constructor(
             if (child.visibility == GONE) {
                 return@forEachIndexed
             }
-            val layoutParams = child.layoutParams as MarginLayoutParams
+            val layoutParams = child.layoutParams as LayoutParams
             measureChildWithMargins(
                 child,
                 widthMeasureSpec,
@@ -47,6 +64,14 @@ class OverHideLayout @JvmOverloads constructor(
             } else if (consumedWidth == availableWidth) {
                 lastVisibleIndex = index
                 hasOverflowed = true
+                if (layoutParams.overflowAutoHide) {
+                    val childMeasuredWidth = child.measuredWidth
+                    child.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), getChildMeasureSpec(heightMeasureSpec, paddingVertical, layoutParams.height))
+                    val childIntrinsicWidth = child.measuredWidth
+                    if (childIntrinsicWidth > childMeasuredWidth) {
+                        lastVisibleIndex = index - 1
+                    }
+                }
             }
             maxHeight = max(
                 maxHeight,
@@ -86,6 +111,25 @@ class OverHideLayout @JvmOverloads constructor(
             child.layout(childLeft, childTop, childRight, childBottom)
             childLeft = childRight
         }
+    }
+
+    class LayoutParams : MarginLayoutParams {
+
+        var overflowAutoHide: Boolean = false
+
+        constructor(width: Int, height: Int): super(width, height) {
+            overflowAutoHide = false
+        }
+        constructor(context: Context, attrs: AttributeSet?): super(context, attrs) {
+            val a = context.obtainStyledAttributes(attrs, R.styleable.OverflowAutoHideLayout_Layout)
+            overflowAutoHide = a.getBoolean(R.styleable.OverflowAutoHideLayout_Layout_layout_overflowAutoHide, false)
+            a.recycle()
+        }
+        constructor(width: Int, height: Int, overflowAutoHide: Boolean): super(width, height) {
+            this.overflowAutoHide = overflowAutoHide
+        }
+        constructor(lp: ViewGroup.LayoutParams): super(lp)
+        constructor(lp: MarginLayoutParams): super(lp)
     }
 
 }
